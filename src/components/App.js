@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Statistics from './statistics';
-import Section from './title';
-import FeedbackOptions from './button';
-import options from './options.json';
+import Statistics from './statisticsEl';
+import Section from './titleEl';
+import FeedbackOptions from './buttonEl';
+import options from '../data/options.json';
 
 class App extends Component {
   state = {
