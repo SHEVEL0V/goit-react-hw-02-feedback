@@ -1,4 +1,7 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import s from './style.module.css';
+
 export default function FeedbackOptions({
   options,
   onLeaveFeedback,
@@ -6,17 +9,28 @@ export default function FeedbackOptions({
   return (
     <div className={s.thumb}>
       {options.map(el => {
+        const { id, name } = el;
         return (
           <button
-            key={el.id}
+            key={id}
             className={s.button}
-            name={el.name}
+            name={name}
             onClick={e => onLeaveFeedback(e.currentTarget.name)}
           >
-            {el.name}
+            {name}
           </button>
         );
       })}
     </div>
   );
 }
+
+FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
+};

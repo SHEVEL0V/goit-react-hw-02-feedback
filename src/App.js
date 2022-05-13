@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Statistics from './statisticsEl';
-import Section from './titleEl';
-import FeedbackOptions from './buttonEl';
-import options from '../data/options.json';
+import Statistics from './components/statisticsEl';
+import Section from './components/titleEl';
+import FeedbackOptions from './components/buttonsEl';
+import options from './data/options.json';
 
 class App extends Component {
   state = {
@@ -23,7 +23,7 @@ class App extends Component {
   };
   countPositiveFeedbackPercentage = () => {
     return Math.round(
-      (this.state.good / this.countTotalFeedback()) * 100,
+      (this.state.good / this.countTotalFeedback()) * 100
     );
   };
 
