@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import Statistics from './components/statisticsEl';
-import Section from './components/titleEl';
-import FeedbackOptions from './components/buttonsEl';
-import options from './data/options.json';
+import Section from './components/Section';
+import Statistics from './components/Statistics';
+import Title from './components/title';
+import FeedbackOptions from './components/FeedbackOptions';
+import Notification from './components/Notification';
+import data from './data/options.json';
 
 class App extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
+    option: data,
   };
 
   onIncrement = name => {
@@ -28,21 +31,31 @@ class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    const nullFeadback = 0;
+    const { good, neutral, bad, options } = this.state;
     return (
-      <Section title="Plaese leave feedba">
-        <FeedbackOptions
-          options={options}
-          onLeaveFeedback={this.onIncrement}
-        />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        ></Statistics>
-      </Section>
+      <>
+        <Section>
+          <Title title="Plaese leave feedba" />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onIncrement}
+          />
+        </Section>
+        <Section>
+          {this.countTotalFeedback() === nullFeadback ? (
+            <Notification />
+          ) : (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            ></Statistics>
+          )}
+        </Section>
+      </>
     );
   }
 }

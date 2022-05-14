@@ -8,27 +8,23 @@ export default function Statistics({
   total,
   positivePercentage,
 }) {
-  const nullFeedback = 0;
   return (
     <div>
       <h2>Statistics</h2>
-      {total === nullFeedback ? (
-        <p>There is no feedback</p>
-      ) : (
-        <ul>
-          <li>Good: {good}</li>
-          <li>Neutrel: {neutral}</li>
-          <li>Bad: {bad}</li>
-          <li>
-            Total:
-            {total}
-          </li>
-          <li>
-            Positive feetback:
-            {positivePercentage}%
-          </li>
-        </ul>
-      )}
+
+      <ul>
+        <li>Good: {good}</li>
+        <li>Neutrel: {neutral}</li>
+        <li>Bad: {bad}</li>
+        <li>
+          Total:
+          {total}
+        </li>
+        <li>
+          Positive feetback:
+          {positivePercentage}%
+        </li>
+      </ul>
     </div>
   );
 }
