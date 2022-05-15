@@ -7,12 +7,11 @@ import Notification from './components/Notification';
 import data from './data/options.json';
 
 class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-    options: data,
-  };
+  state = {};
+
+  componentDidMount() {
+    data.map(({ name }) => this.setState({ [name]: 0 }));
+  }
 
   onIncrement = name => {
     this.setState(st => {
@@ -31,8 +30,8 @@ class App extends Component {
   };
 
   render() {
-    const nullFeadback = 0;
-    const { good, neutral, bad, options } = this.state;
+    const options = Object.keys(this.state);
+    const { good, neutral, bad } = this.state;
     return (
       <>
         <Section>
@@ -43,8 +42,8 @@ class App extends Component {
           />
         </Section>
         <Section>
-          {this.countTotalFeedback() === nullFeadback ? (
-            <Notification />
+          {!this.countTotalFeedback() ? (
+            <Notification message="There is no feedback" />
           ) : (
             <Statistics
               good={good}

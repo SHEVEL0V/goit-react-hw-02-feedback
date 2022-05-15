@@ -9,15 +9,14 @@ export default function FeedbackOptions({
   return (
     <div className={s.thumb}>
       {options.map(el => {
-        const { id, name } = el;
         return (
           <button
-            key={id}
+            key={el}
             className={s.button}
-            name={name}
+            name={el}
             onClick={e => onLeaveFeedback(e.currentTarget.name)}
           >
-            {name}
+            {el}
           </button>
         );
       })}
@@ -27,10 +26,5 @@ export default function FeedbackOptions({
 
 FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ),
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
