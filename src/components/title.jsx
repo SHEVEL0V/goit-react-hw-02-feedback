@@ -5,5 +5,5 @@ export default function Title({ title }) {
 }
 
 Title.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
